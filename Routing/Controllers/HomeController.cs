@@ -35,5 +35,13 @@ namespace Routing.Controllers
 
             return Content(string.Format("{0:D4}-{1:D2}-{2:D2}", year, month, day));
         }
+
+        public ActionResult MixedParams(string param, int? id)
+        {
+            if (param == null || id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            return Content(string.Format("param: {0}, id: {1}", param, id));
+        }
     }
 }

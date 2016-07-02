@@ -22,14 +22,22 @@ namespace Routing
                 url: "{controller}/{action}/{year}/{month}/{day}",
                 defaults: null,
                 constraints: new { year = @"\d{4}", month = @"\d{2}", day = @"\d{2}" },
-                namespaces: new [] { rootNamespace }
+                namespaces: new[] { rootNamespace }
+            );
+
+            routes.MapRoute(
+                name: "Mixed_params",
+                url: "{controller}/{action}/{param}-{id}",
+                defaults: null,
+                constraints: new { param = @"\w+", id = @"\d+" },
+                namespaces: new[] { rootNamespace }
             );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new [] { rootNamespace }
+                namespaces: new[] { rootNamespace }
             );
         }
     }

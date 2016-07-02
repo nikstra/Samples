@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -25,6 +26,14 @@ namespace Routing.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Date(int? year, int? month, int? day)
+        {
+            if ((year ?? month ?? day) == null) // Routing should prevent partial dates.
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            return Content(string.Format("{0:D4}-{1:D2}-{2:D2}", year, month, day));
         }
     }
 }

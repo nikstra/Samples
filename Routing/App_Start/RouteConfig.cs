@@ -14,6 +14,13 @@ namespace Routing
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Date",
+                url: "{controller}/{action}/{year}/{month}/{day}",
+                defaults: null,
+                constraints: new { year = @"\d{4}", month = @"\d{2}", day = @"\d{2}" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

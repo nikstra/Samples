@@ -23,8 +23,11 @@ namespace Routing
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new [] { typeof(Controllers.HomeController).Namespace } // Needs namespace to disambiguate HomeController in different Areas.
             );
+
+            System.Diagnostics.Debug.Print("Namespace for Default route: " + typeof(Routing.Controllers.HomeController).Namespace);
         }
     }
 }

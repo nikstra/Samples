@@ -13,21 +13,24 @@ namespace Routing
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // MapRoute needs namespace to disambiguate HomeController in different areas.
+            string rootNamespace = typeof(Controllers.HomeController).Namespace;
+            System.Diagnostics.Debug.Print("Namespace for Default route: " + rootNamespace);
+
             routes.MapRoute(
                 name: "Date",
                 url: "{controller}/{action}/{year}/{month}/{day}",
                 defaults: null,
-                constraints: new { year = @"\d{4}", month = @"\d{2}", day = @"\d{2}" }
+                constraints: new { year = @"\d{4}", month = @"\d{2}", day = @"\d{2}" },
+                namespaces: new [] { rootNamespace }
             );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new [] { typeof(Controllers.HomeController).Namespace } // Needs namespace to disambiguate HomeController in different Areas.
+                namespaces: new [] { rootNamespace }
             );
-
-            System.Diagnostics.Debug.Print("Namespace for Default route: " + typeof(Routing.Controllers.HomeController).Namespace);
         }
     }
 }

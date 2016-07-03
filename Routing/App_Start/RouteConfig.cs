@@ -17,6 +17,24 @@ namespace Routing
             string rootNamespace = typeof(Controllers.HomeController).Namespace;
             System.Diagnostics.Debug.Print("Namespace for Default route: " + rootNamespace);
 
+            // Just because...
+            routes.MapRoute(
+                name: "Backwards",
+                url: "{id}/{action}/{controller}",
+                defaults: null,
+                constraints: new { action = "Backwards" },
+                namespaces: new[] { rootNamespace }
+            );
+
+            // ...and since optional parameters has to be the last url segment.
+            routes.MapRoute(
+                name: "Backwards_no_id",
+                url: "{action}/{controller}",
+                defaults: null,
+                constraints: new { action = "Backwards" },
+                namespaces: new[] { rootNamespace }
+            );
+
             routes.MapRoute(
                 name: "Date",
                 url: "{controller}/{action}/{year}/{month}/{day}",

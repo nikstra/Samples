@@ -2,7 +2,10 @@
     <table>
         <tr data-ng-repeat="movie in movies">
             <td>{{movie.Title}}</td>
-            <td><a href="#/details/{{movie.Id}}">Details</a></td>
+            <td>
+                <a class="btn btn-default" href="#/details/{{movie.Id}}">Details</a>
+                <button class="btn btn-default" data-ng-click="delete(movie)">Delete</button>
+            </td>
         </tr>
     </table>
 </div>

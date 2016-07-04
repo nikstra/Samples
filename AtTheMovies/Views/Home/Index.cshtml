@@ -5,6 +5,10 @@
 }
 <div data-ng-app="atTheMovies">
     <div data-ng-controller="ListController">
-
+        <table>
+            <tr data-ng-repeat="movie in movies">
+                <td>{{movie.Title}}</td>
+            </tr>
+        </table>
     </div>
 </div>

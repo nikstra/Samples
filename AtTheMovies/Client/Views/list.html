@@ -1,0 +1,8 @@
+﻿<div data-ng-controller="ListController">
+    <table>
+        <tr data-ng-repeat="movie in movies">
+            <td>{{movie.Title}}</td>
+            <td><a href="#/details/{{movie.Id}}">Details</a></td>
+        </tr>
+    </table>
+</div>

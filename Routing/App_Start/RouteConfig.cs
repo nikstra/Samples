@@ -21,7 +21,7 @@ namespace Routing
             routes.MapRoute(
                 name: "Backwards",
                 url: "{id}/{action}/{controller}",
-                defaults: null,
+                defaults: null, //new { controller = "Home" },
                 constraints: new { action = "Backwards" },
                 namespaces: new[] { rootNamespace }
             );
@@ -30,7 +30,7 @@ namespace Routing
             routes.MapRoute(
                 name: "Backwards_no_id",
                 url: "{action}/{controller}",
-                defaults: null,
+                defaults: null, //new { controller = "Home" },
                 constraints: new { action = "Backwards" },
                 namespaces: new[] { rootNamespace }
             );

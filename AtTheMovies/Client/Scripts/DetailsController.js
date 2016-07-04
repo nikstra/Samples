@@ -1,10 +1,10 @@
 ﻿(function (app) {
 
-    var DetailsController = function ($scope, $http, $routeParams) {
+    var DetailsController = function ($scope, $routeParams, movieService) {
 
         var id = $routeParams.id;
-
-        $http.get("/api/movie/" + id)
+        movieService
+            .getById(id)
             .success(function (data) {
                 $scope.movie = data;
             });

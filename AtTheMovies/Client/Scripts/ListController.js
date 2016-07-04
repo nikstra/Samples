@@ -8,6 +8,16 @@
                 $scope.movies = data;
             });
 
+        $scope.create = function () {
+            $scope.edit = {
+                movie: {
+                    Title: "",
+                    Runtime: 0,
+                    ReleaseYear: new Date().getFullYear()
+                }
+            };
+        };
+
         $scope.delete = function (movie) {
             movieService.delete(movie)
                 .success(function () {

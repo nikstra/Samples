@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<string>
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -8,6 +9,15 @@
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
+<div class="row">
+    <h2>Strings injected by ninject :)</h2>
+    <ul>
+        @foreach (var str in Model)
+        {
+            <li>@str</li>
+        }
+    </ul>
+</div>
 <div class="row">
     <div class="col-md-4">
         <h2>Getting started</h2>
